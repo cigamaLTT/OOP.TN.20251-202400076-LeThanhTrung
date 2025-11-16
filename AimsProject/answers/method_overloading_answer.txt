@@ -1,0 +1,7 @@
+1. Chuyện gì xảy ra khi thêm phương thức này, tại sao?
+
+Java đọc 2 hàm đấy giống nhau nên báo trùng lặp
+
+2. Bạn lựa chọn phương án nào để giải quyết?
+
+Giữ hàm addDVD(DigitalVideoDisc …discs) vì nó cho phép dùng cả mảng làm tham số, nói chung là rộng hơn
