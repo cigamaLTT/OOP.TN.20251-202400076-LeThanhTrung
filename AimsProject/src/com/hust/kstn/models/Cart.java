@@ -93,12 +93,19 @@ public class Cart {
     }
 
     public void print(){
-        System.out.println("=== Total items in cart: " + qtyOrdered + " ===");
-        System.out.println("=== All items in cart ===");
+        if(qtyOrdered == 0){
+            System.out.println("The Cart is empty!!!");
+            return;
+        }
+        System.out.println("=================================== THE CURRENT CART ===================================");
+        System.out.println("Total items: " + qtyOrdered);
 
         for (int i = 0; i < this.qtyOrdered; i++){
-            System.out.println("[Title]: " + this.itemsInCart[i].getTitle() +
-                    ", " + "[Cost]: " + this.itemsInCart[i].getCost());
+            System.out.println(itemsInCart[i]);
         }
+        System.out.println("========================================================================================");
+
     }
+
+
 }

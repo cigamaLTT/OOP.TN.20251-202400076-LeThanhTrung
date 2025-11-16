@@ -82,4 +82,15 @@ public class DigitalVideoDisc {
     public void setCost(double cost) {
         this.cost = cost;
     }
+
+    @Override
+    public String toString() {
+        return "DVD" + "[" + this.id + "]"
+                + "[" + this.title + "]"
+                + "[" + this.cost + "]"
+                + "[" + this.director + "]"
+                + "[" + this.length + "]"
+                + "[" + this.category + "]";
+    }
+
 }
