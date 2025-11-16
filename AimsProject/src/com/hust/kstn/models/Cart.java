@@ -22,7 +22,7 @@ public class Cart {
         }
     }
 
-    public void addDVD(DigitalVideoDisc disc1, DigitalVideoDisc disc2) {
+    public void add_DVD(DigitalVideoDisc disc1, DigitalVideoDisc disc2) {
         boolean isDisc1Added = addOneDVD(disc1);
         boolean isDisc2Added = addOneDVD(disc2);
 
@@ -35,7 +35,7 @@ public class Cart {
         }
     }
 
-    public void addDVD(DigitalVideoDisc[] discs) {
+    public void add_DVD(DigitalVideoDisc... discs) {
         boolean isAtLeastOneDiskAdded = false;
         boolean isAtLeastOneDiskRejected = false;
         for (DigitalVideoDisc disc : discs){
