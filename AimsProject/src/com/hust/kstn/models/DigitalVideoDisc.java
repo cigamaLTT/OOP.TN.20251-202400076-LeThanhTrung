@@ -10,6 +10,10 @@ public class DigitalVideoDisc {
     private static int nbDigitalVideoDiscs = 0;
     private int id;
 
+    public int getId() {
+        return id;
+    }
+
     public DigitalVideoDisc(String title) {
         nbDigitalVideoDiscs++;
         this.id = nbDigitalVideoDiscs;
