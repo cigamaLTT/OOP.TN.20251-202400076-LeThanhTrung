@@ -10,14 +10,13 @@ public class Main {
 
         Cart cart = new Cart();
 
-        cart.add_DVD(dvd1);
-        cart.add_DVD(dvd2);
+        cart.add_DVD(dvd1, dvd2, dvd3);
+        cart.remove_DVD(dvd3);
         cart.print();
         cart.calculate_total_cost();
 
         cart.remove_DVD(dvd2);
-        cart.add_DVD(dvd3);
-        cart.add_DVD(dvd4);
+        cart.add_DVD(dvd3, dvd4);
         cart.remove_DVD(dvd2);
         cart.print();
         cart.calculate_total_cost();
