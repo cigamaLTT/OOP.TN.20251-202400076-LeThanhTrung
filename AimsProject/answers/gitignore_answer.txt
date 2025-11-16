@@ -1,0 +1,23 @@
+1. Tại sao những đường dẫn trên nên được thêm vào .gitignore (nếu không thêm thì sao)? 
+
+nó là các file sinh ra từ eclipse, nếu mà không thêm các dòng trên vào thì khi commit code lên git thì nó sẽ commit hết cả mấy cái linh tinh thừa thãi lên, trong khi vốn dĩ thứ ta cần trong GitHub chỉ là file source code là đủ và nếu thêm các file thừa khác thì khi người khác tải code về sẽ dễ gây ra xung đột IDE khác nhau, và ngoài ra việc up tất cả các file dư thừa cũng khiến cho file trên github trở nên quá nặng so với mức cần thiết.
+
+2. Nếu sử dụng những công cụ khác để lập trình Java (như IntelliJ IDEA hoặc VSCode), những đường dẫn nào sẽ được thêm vào .gitignore?
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Visual Studio Code
+.vscode/
+
+3. Trong trường hợp bạn đã lỡ commit các file tạm lên Git, nhưng sau đó bạn đã thêm chúng vào .gitignore và muốn Git ngừng theo dõi chúng mà không xóa khỏi máy, bạn sẽ cần thực hiện những thao tác nào?
+
+git rm --cached <tên file>
+
+nội dung cách sử dụng trên git documentation https://git-scm.com/docs/git-rm
+
+
