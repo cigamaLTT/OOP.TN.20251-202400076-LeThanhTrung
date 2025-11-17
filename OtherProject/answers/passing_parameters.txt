@@ -1,0 +1,82 @@
+1. Tại sao sau khi chạy phương thức swap(s1,s2) thì tên của hai học sinh vẫn không thay đổi? Từ đó, Java là ngôn ngữ truyền tham trị hay truyền tham chiếu?
+
+Tại vì java là ngôn ngữ truyền tham trị, tức là khi cho giá trị vào làm tham số thì nó chỉ là bản sao, chứ ko phải bản gốc, nên giá trị gốc đặt ở hàm main không bị thay đổi
+
+2. Bạn làm thế nào để phương thức swap hoạt động (thật sự tráo đổi thông tin của hai đối tượng được truyền vào)?
+
+Hàm swap thay đổi các giá trị bên trong object thì được, tức là chúng ta sẽ hoán đổi thuộc tính của giá trị chứ không phải bản thân object
+
+3. Vẽ sơ đồ minh họa cho các vùng nhớ stack và heap trong trường hợp này để chứng minh cách bạn đưa ra đã hoạt động đúng.
+
+
+3.1. TRƯỚC KHI GỌI HÀM (Trong 'main'):
+
+
+   STACK (Vùng nhớ 'main')         HEAP (Vùng nhớ đối tượng)
+   -------------------------         ------------------------------------------
+  | s1 = 0x100 (địa chỉ)   | ----> | 0x100: Student { id: 1, name: "A" } |
+  | s2 = 0x200 (địa chỉ)   | ----> | 0x200: Student { id: 2, name: "B" } |
+   -------------------------         ------------------------------------------
+   (s1 và s2 chứa địa chỉ trỏ đến Heap)
+
+
+
+3.2. KHI BẮT ĐẦU GỌI 'swapStudentData(s1, s2)':
+
+   (Java sao chép GIÁ TRỊ của s1 và s2 vào các biến cục bộ của hàm)
+
+   STACK (Vùng nhớ 'swapStudentData')   STACK (Vùng nhớ 'main')
+   ---------------------------------     -------------------------
+  | s1_copy = 0x100 (bản sao) | <---- | s1 = 0x100            |
+  | s2_copy = 0x200 (bản sao) | <---- | s2 = 0x200            |
+   ---------------------------------     -------------------------
+   
+   (s1_copy trỏ đến cùng đối tượng s1 trỏ đến. s2_copy trỏ đến cùng đối tượng s2 trỏ đến)
+
+
+
+3.3. BÊN TRONG HÀM 'swapStudentData':
+
+   (Đầu tiên, hàm tạo 2 biến tạm trên Stack)
+
+   STACK (Vùng nhớ 'swapStudentData')         HEAP (Vùng nhớ đối tượng)
+   ---------------------------------         ------------------------------------------
+  | s1_copy = 0x100                 | ----> | 0x100: Student { id: 1, name: "A" } |
+  | s2_copy = 0x200                 | ----> | 0x200: Student { id: 2, name: "B" } |
+  |                                 |         
+  | tempName = "A" (đọc từ 0x100)   |         
+  | tempId   = 1   (đọc từ 0x100)   |         
+   ---------------------------------         ------------------------------------------
+
+   (Sau đó, hàm dùng s1_copy và s2_copy để thay đổi dữ liệu TRÊN HEAP)
+
+   // s1_copy.setName(s2_copy.getName());  <-- Lệnh này chạy
+   // s1_copy.setStudentId(s2_copy.getStudentId()); <-- Lệnh này chạy
+
+   STACK (Vùng nhớ 'swapStudentData')         HEAP (Vùng nhớ đối tượng)
+   ---------------------------------         ------------------------------------------
+  | s1_copy = 0x100                 | ----> | 0x100: Student { id: 2, name: "B" } | <-- BỊ GHI ĐÈ
+  | s2_copy = 0x200                 | ----> | 0x200: Student { id: 2, name: "B" } |
+  | tempName = "A"                  |         
+  | tempId   = 1                    |         
+   ---------------------------------         ------------------------------------------
+
+   // s2_copy.setName(tempName); <-- Lệnh này chạy
+   // s2_copy.setStudentId(tempId);   <-- Lệnh này chạy
+
+   STACK (Vùng nhớ 'swapStudentData')         HEAP (Vùng nhớ đối tượng)
+   ---------------------------------         ------------------------------------------
+  | s1_copy = 0x100                 | ----> | 0x100: Student { id: 2, name: "B" } |
+  | s2_copy = 0x200                 | ----> | 0x200: Student { id: 1, name: "A" } | <-- BỊ GHI ĐÈ
+  | tempName = "A"                  |         
+  | tempId   = 1                    |         
+   ---------------------------------         ------------------------------------------
+3.4. KHI HÀM 'swapStudentData' KẾT THÚC:
+
+   (Vùng nhớ Stack của 'swapStudentData' bị xóa. Chúng ta quay lại 'main')
+
+   STACK (Vùng nhớ 'main')                 HEAP (Vùng nhớ đối tượng)
+   -------------------------                 ------------------------------------------
+  | s1 = 0x100 (vẫn vậy)     | ---------> | 0x100: Student { id: 2, name: "B" } |
+  | s2 = 0x200 (vẫn vậy)     | ---------> | 0x200: Student { id: 1, name: "A" } |
+   -------------------------                 ------------------------------------------
