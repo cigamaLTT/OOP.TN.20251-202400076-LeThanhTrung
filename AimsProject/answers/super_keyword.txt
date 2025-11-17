@@ -1,0 +1,3 @@
+Nêu ý nghĩa của từ khóa super?
+
+Từ khóa super ám chỉ đến lớp cha của nó, gọi super() là constructor và super.method hoặc super.attribute sẽ truy cập vào hàm và thuộc tính của class cha

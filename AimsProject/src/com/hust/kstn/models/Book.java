@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Book {
+public class Book extends Media {
     public static class BookAuthor{
         private String fullName;
         private int yearOfBirth;
@@ -52,30 +52,10 @@ public class Book {
 
     private List<BookAuthor> authors = new ArrayList<>();
 
-    private int id;
-    private String title;
-    private String category;
-    private double cost;
     private int numOfTokens;
 
     public List<BookAuthor> getAuthors() {
         return authors;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public double getCost() {
-        return cost;
     }
 
     public int getNumOfTokens() {
@@ -83,30 +63,21 @@ public class Book {
     }
 
     public Book(int id, String title, String category, double cost, int numOfTokens, BookAuthor... authors) {
+        super(title, category, cost);
         this.authors.addAll(Arrays.asList(authors));
-        this.id = id;
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
         this.numOfTokens = numOfTokens;
     }
 
     public Book(int id, String title, String category, double cost, int numOfTokens, List<BookAuthor> authors) {
-        this.id = id;
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
+        super(title, category, cost);
         this.numOfTokens = numOfTokens;
         this.authors = authors;
     }
 
     @Override
     public String toString() {
-        return "Book[" + this.id + "]["
-                + this.title + "]["
-                + this.cost + "]["
-                + this.category + "]["
-                + this.numOfTokens + "]"
+        return super.toString()
+                + "[" + this.numOfTokens + "]"
                 + "\nAuthors: " + this.authors;
     }
 }
