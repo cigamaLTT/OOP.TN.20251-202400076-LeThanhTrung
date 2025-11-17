@@ -56,7 +56,7 @@ public class Book {
     private String title;
     private String category;
     private double cost;
-    private int length;
+    private int numOfTokens;
 
     public List<BookAuthor> getAuthors() {
         return authors;
@@ -78,25 +78,25 @@ public class Book {
         return cost;
     }
 
-    public int getLength() {
-        return length;
+    public int getNumOfTokens() {
+        return numOfTokens;
     }
 
-    public Book(int id, String title, String category, double cost, int length, BookAuthor... authors) {
+    public Book(int id, String title, String category, double cost, int numOfTokens, BookAuthor... authors) {
         this.authors.addAll(Arrays.asList(authors));
         this.id = id;
         this.title = title;
         this.category = category;
         this.cost = cost;
-        this.length = length;
+        this.numOfTokens = numOfTokens;
     }
 
-    public Book(int id, String title, String category, double cost, int length, List<BookAuthor> authors) {
+    public Book(int id, String title, String category, double cost, int numOfTokens, List<BookAuthor> authors) {
         this.id = id;
         this.title = title;
         this.category = category;
         this.cost = cost;
-        this.length = length;
+        this.numOfTokens = numOfTokens;
         this.authors = authors;
     }
 
@@ -106,7 +106,7 @@ public class Book {
                 + this.title + "]["
                 + this.cost + "]["
                 + this.category + "]["
-                + this.length + "]"
+                + this.numOfTokens + "]"
                 + "\nAuthors: " + this.authors;
     }
 }
