@@ -1,35 +1,16 @@
 package com.hust.kstn.models;
 
-public class DigitalVideoDisc extends Media {
-    private String director;
-    private int length;
+import java.util.List;
 
-    public DigitalVideoDisc(String title, String category, String director, int length, double cost) {
-        super(title, category, cost);
-        this.director = director;
-        this.length = length;
-    }
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
+public class DigitalVideoDisc extends Disc {
+    public DigitalVideoDisc(String title, String category, double cost, int length, List<String> directors) {
+        super(title, category, cost, directors);
+        super.length = length;
     }
 
     @Override
     public String toString() {
-        return super.toString()
-                + "[" + this.director + "]"
-                + "[" + this.length + "]";
+        return super.toString();
     }
 
 }
