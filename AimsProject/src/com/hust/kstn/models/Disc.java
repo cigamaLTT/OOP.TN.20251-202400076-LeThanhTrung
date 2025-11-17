@@ -15,4 +15,8 @@ public class Disc extends Media {
     public List<String> getDirectors() {
         return directors;
     }
+
+    public int getLength() {
+        return length;
+    }
 }
