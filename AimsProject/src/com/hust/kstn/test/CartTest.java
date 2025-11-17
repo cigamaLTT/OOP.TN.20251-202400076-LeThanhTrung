@@ -33,7 +33,7 @@ public class CartTest {
 
 
         System.out.println("\n--- 5. TESTING REMOVE EXISTING ITEM ---");
-        DigitalVideoDisc dvdToRemove = new DigitalVideoDisc("DVD 10");
+        DigitalVideoDisc dvdToRemove = new DigitalVideoDisc("DVD 10","Category", "Director", 120, 31.0);
 
         myCart.remove_DVD(dvdToRemove);
         myCart.print();

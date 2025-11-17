@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CompactDisc {
+public class CompactDisc extends Media {
     public static class Track{
         private String title;
         private int length;
@@ -32,29 +32,9 @@ public class CompactDisc {
     private List<Track> tracks = new ArrayList<>();
     private List<String> artists = new ArrayList<>();
     private List<String> directors = new ArrayList<>();
-    private int id;
-    private String title;
-    private String category;
-    private double cost;
 
     public List<Track> getTracks() {
         return tracks;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public double getCost() {
-        return cost;
     }
 
     public List<String> getArtists() {
@@ -66,20 +46,14 @@ public class CompactDisc {
     }
 
     public CompactDisc(int id, String title, String category, double cost, List<String> artists, List<String> directors, List<Track> tracks) {
-        this.id = id;
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
+        super(title, category, cost);
         this.artists = artists;
         this.directors = directors;
         this.tracks = tracks;
     }
 
     public CompactDisc(int id, String title, String category, double cost, List<String> artists, List<String> directors, Track... tracks) {
-        this.id = id;
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
+        super(title, category, cost);
         this.artists = artists;
         this.directors = directors;
         this.tracks.addAll(Arrays.asList(tracks));
@@ -112,10 +86,7 @@ public class CompactDisc {
     }
 
     public String toString() {
-        return "Compact Discs[" + this.id + "]["
-                + this.title + "]["
-                + this.cost + "]["
-                + this.category + "]"
-                + "\nTracks: " + this.tracks;
+        return super.toString()
+                + "[" + "\nTracks: " + this.tracks;
     }
 }
