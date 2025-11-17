@@ -1,0 +1,6 @@
+Tại sao java chỉ hỗ trợ đơn kế thừa?
+
+1 D kế thừa từ cả B và C
+Khi đối tượng D gọi phương thức doSomething(), nó nên chạy phiên bản của B hay của C?
+
+C++ giải quyết vấn đề này bằng các cơ chế phức tạp (như kế thừa ảo - virtual inheritance), nhưng các nhà thiết kế Java cho rằng sự phức tạp này lớn hơn lợi ích mà nó mang lại. Java quyết định sử dụng đơn kế thừa và sử dụng Interface thay cho đa kế thừa

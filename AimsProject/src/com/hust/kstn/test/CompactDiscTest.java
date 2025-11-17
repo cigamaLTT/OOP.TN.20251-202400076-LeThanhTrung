@@ -21,7 +21,6 @@ public class CompactDiscTest {
         directors.add("Main Director");
 
         CompactDisc cd1 = new CompactDisc(
-                201,
                 "My First CD",
                 "Music",
                 15.99,

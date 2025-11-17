@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CompactDisc extends Media {
+public class CompactDisc extends Disc {
     public static class Track{
         private String title;
         private int length;
@@ -31,7 +31,6 @@ public class CompactDisc extends Media {
 
     private List<Track> tracks = new ArrayList<>();
     private List<String> artists = new ArrayList<>();
-    private List<String> directors = new ArrayList<>();
 
     public List<Track> getTracks() {
         return tracks;
@@ -41,22 +40,18 @@ public class CompactDisc extends Media {
         return artists;
     }
 
-    public List<String> getDirectors() {
-        return directors;
-    }
-
-    public CompactDisc(int id, String title, String category, double cost, List<String> artists, List<String> directors, List<Track> tracks) {
-        super(title, category, cost);
+    public CompactDisc(String title, String category, double cost, List<String> directors, List<String> artists, List<Track> tracks) {
+        super(title, category, cost, directors);
         this.artists = artists;
-        this.directors = directors;
         this.tracks = tracks;
+        super.length = this.totalLength();
     }
 
-    public CompactDisc(int id, String title, String category, double cost, List<String> artists, List<String> directors, Track... tracks) {
-        super(title, category, cost);
+    public CompactDisc(String title, String category, double cost, List<String> directors, List<String> artists, Track... tracks) {
+        super(title, category, cost, directors);
         this.artists = artists;
-        this.directors = directors;
         this.tracks.addAll(Arrays.asList(tracks));
+        super.length = this.totalLength();
     }
 
     public int totalLength(){
