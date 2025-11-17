@@ -62,13 +62,13 @@ public class Book extends Media {
         return numOfTokens;
     }
 
-    public Book(int id, String title, String category, double cost, int numOfTokens, BookAuthor... authors) {
+    public Book(String title, String category, double cost, int numOfTokens, BookAuthor... authors) {
         super(title, category, cost);
         this.authors.addAll(Arrays.asList(authors));
         this.numOfTokens = numOfTokens;
     }
 
-    public Book(int id, String title, String category, double cost, int numOfTokens, List<BookAuthor> authors) {
+    public Book(String title, String category, double cost, int numOfTokens, List<BookAuthor> authors) {
         super(title, category, cost);
         this.numOfTokens = numOfTokens;
         this.authors = authors;

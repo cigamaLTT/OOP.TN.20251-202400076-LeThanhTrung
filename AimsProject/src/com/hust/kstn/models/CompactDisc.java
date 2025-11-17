@@ -45,14 +45,14 @@ public class CompactDisc extends Media {
         return directors;
     }
 
-    public CompactDisc(int id, String title, String category, double cost, List<String> artists, List<String> directors, List<Track> tracks) {
+    public CompactDisc(String title, String category, double cost, List<String> artists, List<String> directors, List<Track> tracks) {
         super(title, category, cost);
         this.artists = artists;
         this.directors = directors;
         this.tracks = tracks;
     }
 
-    public CompactDisc(int id, String title, String category, double cost, List<String> artists, List<String> directors, Track... tracks) {
+    public CompactDisc(String title, String category, double cost, List<String> artists, List<String> directors, Track... tracks) {
         super(title, category, cost);
         this.artists = artists;
         this.directors = directors;

@@ -14,7 +14,6 @@ public class BookTest {
 
 
         Book book1 = new Book(
-                101,
                 "The First Book",
                 "Fiction",
                 25.50,
@@ -32,7 +31,6 @@ public class BookTest {
         authorsForBook2.add(author2);
 
         Book book2 = new Book(
-                102,
                 "The Second Book",
                 "Non-Fiction",
                 35.75,
@@ -46,7 +44,6 @@ public class BookTest {
 
 
         Book book3 = new Book(
-                103,
                 "A Book with Two Authors",
                 "Science",
                 40.00,
